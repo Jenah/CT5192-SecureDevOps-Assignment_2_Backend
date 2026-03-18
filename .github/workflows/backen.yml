@@ -24,10 +24,13 @@ jobs:
         cd backend-flask
         pip install -r requirements.txt
 
-    - name: Run SonarCloud Scan
+    - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v2
       with:
         projectBaseDir: backend-flask
+        args: >
+          -Dsonar.projectKey=YOUR_PROJECT_KEY
+          -Dsonar.organization=YOUR_ORG
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
